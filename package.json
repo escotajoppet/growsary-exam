@@ -1,0 +1,25 @@
+{
+  "name": "growsary-exam-ui",
+  "version": "1.0.0",
+  "description": "Growsary User Interface",
+  "author": "Joppet Escota",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "cookie-universal-nuxt": "^2.0.19",
+    "material-design-icons-iconfont": "^5.0.1",
+    "nuxt": "^2.0.0",
+    "nuxt-material-design-icons-iconfont": "^1.0.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}
