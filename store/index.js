@@ -39,18 +39,21 @@ const createStore = function() {
           .catch(err => err.response.data);
       },
       setTopics: async({ commit }, { page, pageSize }) => {
-        const response = await axios.get('http://localhost:3001/topics', {
-          headers: {
-            'X-Access-Token': getCookie('authToken'),
-          },
-          params: {
-            page,
-            pageSize,
-          },
-        });
-
-        commit('setTopics', response.data.data);
-        commit('setPageCount', response.data.pageCount);
+        return axios
+          .get('http://localhost:3001/topics', {
+            headers: {
+              'X-Access-Token': getCookie('authToken'),
+            },
+            params: {
+              page,
+              pageSize,
+            },
+          })
+          .then(response => {
+            commit('setTopics', response.data.data);
+            commit('setPageCount', response.data.pageCount);
+          })
+          .catch(err => err.response.data);
       },
       setTopic: async({ commit }, id) => {
         return axios
@@ -93,8 +96,6 @@ const createStore = function() {
         commit('setNotification', data);
       },
       setMessages: async({ commit }, { id, page, pageSize }) => {
-        console.log({page, pageSize, id})
-
         const response = await axios.get(`http://localhost:3001/topic/${id}/messages`, {
             headers: {
               'X-Access-Token': getCookie('authToken'),

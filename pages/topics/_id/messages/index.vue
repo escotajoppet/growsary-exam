@@ -29,13 +29,6 @@
                   <v-list-item-title v-text="item.owner.name"></v-list-item-title>
                   <v-list-item-subtitle class="text--primary" v-text="item.message"></v-list-item-subtitle>
                 </v-list-item-content>
-
-                <v-list-item-action>
-                  <v-list-item-action-text v-text="item.action"></v-list-item-action-text>
-                  <v-icon color="grey lighten-1">
-                    mdi-delete-circle-outline
-                  </v-icon>
-                </v-list-item-action>
               </v-list-item>
 
               <v-divider

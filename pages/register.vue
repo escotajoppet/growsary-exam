@@ -15,18 +15,21 @@
           prepend-icon="person"
           type="text"
           v-model="user.name"
+          @keyup.enter="signUp"
         />
         <v-text-field
           label="Email Address"
           prepend-icon="person"
           type="text"
           v-model="user.email"
+          @keyup.enter="signUp"
         />
         <v-text-field
           label="Password"
           prepend-icon="lock"
           type="password"
           v-model="user.password"
+          @keyup.enter="signUp"
         />
       </v-form>
     </v-card-text>

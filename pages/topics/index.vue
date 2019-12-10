@@ -100,15 +100,31 @@
         'setTopics',
       ]),
       ...mapMutations([
+        'setAuthToken',
         'setNotification',
         'clearNotification',
       ]),
       async pageChange(page) {
-        await this.setTopics({
+        await this.loadData();
+      },
+      async loadData() {
+        const response = await this.setTopics({
           page: this.page,
           pageSize: this.pageSize,
-        })
-      },
+        });
+
+        if (response && response.error) {
+          this.setNotification({
+            type: 'error',
+            message: response.error,
+          });
+
+          this.setAuthToken(null);
+          this.$cookies.remove('authToken');
+          this.$cookies.remove('userId');
+          this.$router.push('/login');
+        }
+      }
     },
     computed: {
       ...mapState([
@@ -118,10 +134,7 @@
       ]),
     },
     async mounted() {
-      await this.setTopics({
-        page: this.page,
-        pageSize: this.pageSize,
-      });
+      await this.loadData();
 
       this.clearNotification();
     },
